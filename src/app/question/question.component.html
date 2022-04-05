@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 card text-center mb-3" *ngFor="let question of questions; index as i">
+            <div class="card-header">
+                <i class="fa-solid fa-code"></i>
+                {{ question.name }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fa-solid fa-user"></i>
+                    {{question?.person?.name || 'User' }}
+                </h5>
+                <p class="card-text">
+                    <i class="fa-solid fa-dna"></i>
+                    {{ question?.person?.role || 'Role' }} </p>
+                <div class="d-flex justify-content-between align-items-end">
+                    <a [href]="getFileUrl(question.script)"
+                        class="btn btn-outline-success"
+                        download="{{ question.name }}"
+                        type="{{ question.script.type }}">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        File</a>
+                    <button type="button" class="btn btn-outline-primary" (click)="setShow(i)">
+                        <i class="fa-solid fa-eye{{ show[i] ? '-slash':''}}"></i>
+                        Params
+                    </button>
+                </div>
+            </div>
+            <div id="modal">
+                <div class="container">
+                    <div *ngIf="show[i]" class="row w-100 p-0 m-auto">
+                        <div class="col-12 mb-1" *ngFor="let item of question['_4test'].function_name; index as idx">
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item w-100 d-flex align-items-center justify-content-center">
+                                    {{ idx+1 }}
+                                </li>
+                                <li class="list-group-item w-100 d-flex align-items-center justify-content-center">
+                                    Function: {{ item }}
+                                </li>
+                                <li class="list-group-item w-100 d-flex align-items-center justify-content-center">
+                                    Argument: {{ question['_4test'].input[idx] }}
+                                </li>
+                                <li class="list-group-item w-100 d-flex align-items-center justify-content-center">
+                                    Result: {{ question['_4test'].output[idx] }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="row card-footer text-muted">
+                <span class="col border border-secondary p-1 pe-2 ps-2 rounded text-nowrap">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    Created: {{ question.created_at | date:'dd-MM-YYYY HH:mm' }}
+                </span>
+                <span class="col border border-secondary p-1 pe-2 ps-2 rounded text-nowrap">
+                    <i class="fa-solid fa-file-pen"></i>
+                    Changed: {{ (question.changed_at | date:'dd-MM-YYYY HH:mm') || 'No changed'}}
+                </span>
+                <span class="col border border-secondary p-1 pe-2 ps-2 rounded text-nowrap">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                    Downloaded: {{ question.download_count }}
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div *ngIf="bool" class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Success!</h4>
+    <p>function {{ functionName }} &#123; ... &#125;</p>
+    <p>Returning: {{ returning }}</p>
+    <hr>
+    <p class="mb-0">Result: {{ log }}</p>
+</div>
+<div *ngIf="!bool" class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Failed!</h4>
+    <p>function {{ functionName }} &#123; ... &#125;</p>
+    <p>Returning: {{ returning }}</p>
+    <hr>
+    <p class="mb-0">Result: {{ log }}</p>
+</div>

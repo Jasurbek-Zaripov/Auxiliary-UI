@@ -71,7 +71,8 @@
               "browserTarget": "Auxiliary-UI:build:production"
             },
             "development": {
-              "browserTarget": "Auxiliary-UI:build:development"
+              "browserTarget": "Auxiliary-UI:build:development",
+              "port": 1597
             }
           },
           "defaultConfiguration": "development"

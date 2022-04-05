@@ -1,0 +1,9 @@
+<div class="input-group mb-1" #myDiv>
+    <input type="text" class="form-control" placeholder="Function" aria-label="Function" aria-describedby="basic-addon1"
+        #myFunc (input)="eveFunc.emit({a:myFunc.value,idx})">
+    <input type="text" class="form-control" placeholder="Input" aria-label="Input" aria-describedby="basic-addon1"
+        #myInp (input)="eveInp.emit({a:myInp.value,idx})">
+    <input type="text" class="form-control" placeholder="Output" aria-label="Output" aria-describedby="basic-addon1"
+        #myOut (input)="eveOut.emit({a:myOut.value,idx})">
+    <button type="button" class="btn btn-danger" (click)="myDiv.remove();eveDel.emit(idx)"><i class="fa-solid fa-circle-minus"></i></button>
+</div>
